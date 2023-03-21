@@ -1,27 +1,32 @@
+body {
+    background-color: lightgoldenrodyellow;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
 }
 
 .column {
     display: flex;
     flex-direction: column;
+}
+
+header {
     justify-content: center;
     align-items: center;
 }
 
 h1 {
     text-align: center;
-    border: thin solid black;
+    border-bottom: thin solid black;
 }
   
 #vote-tracker {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 250px;
-    border: thin solid black;
 }
   
 img {
@@ -31,10 +36,26 @@ img {
 }
 
 #buttonAndResults {
-    width: 400px;
+    width: 600px;
     margin: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#imgAndParagraph {
+    align-content: center;
+    justify-content: flex-start;
+}
+
+ul {
+    justify-content: center;
+    align-items: center;
 }
 
 li {
     margin: 10px;
+}
+
+footer {
+    text-align: right;
 }

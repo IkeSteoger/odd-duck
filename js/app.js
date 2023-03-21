@@ -1,8 +1,8 @@
 'use strict';
 
 const productsList = [];
-let roundsOfVoting = 25;
-let chartObj = null
+let roundsOfVoting = 5;
+let chartObj = null;
 
 function CreateProduct(name, source){
   this.name = name;
@@ -98,12 +98,13 @@ function handleClick(event){
     }
   });
   console.log('Updated Products: ', productsList);
-  if(roundsOfVoting){
+  if(roundsOfVoting > 1){
     renderProducts();
     roundsOfVoting--;
   } else {
     voteTrackerEl.removeEventListener('click', handleClick);
     chartObj = drawChart();
+    roundsOfVoting--;
   }
 }
 
