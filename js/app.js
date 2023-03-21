@@ -10,25 +10,25 @@ function CreateProduct(name, source){
   this.timesClicked = 0;
 }
 
-productsList.push(new CreateProduct('bag', '/img/bag.jpg'));
-productsList.push(new CreateProduct('banana', '/img/banana.jpg'));
-productsList.push(new CreateProduct('bathroom', '/img/bathroom.jpg'));
-productsList.push(new CreateProduct('boots', '/img/boots.jpg'));
-productsList.push(new CreateProduct('breakfast', '/img/breakfast.jpg'));
-productsList.push(new CreateProduct('bubblegum', '/img/bubblegum.jpg'));
-productsList.push(new CreateProduct('chair', '/img/chair.jpg'));
-productsList.push(new CreateProduct('cthulhu', '/img/cthulhu.jpg'));
-productsList.push(new CreateProduct('dog-duck', '/img/dog-duck.jpg'));
-productsList.push(new CreateProduct('dragon', '/img/dragon.jpg'));
-productsList.push(new CreateProduct('pen', '/img/pen.jpg'));
-productsList.push(new CreateProduct('pet-sweep', '/img/pet-sweep.jpg'));
-productsList.push(new CreateProduct('scissors', '/img/scissors.jpg'));
-productsList.push(new CreateProduct('shark', '/img/shark.jpg'));
-productsList.push(new CreateProduct('sweep', '/img/sweep.png'));
-productsList.push(new CreateProduct('tauntaun', '/img/tauntaun.jpg'));
-productsList.push(new CreateProduct('unicorn', '/img/unicorn.jpg'));
-productsList.push(new CreateProduct('water-can', '/img/water-can.jpg'));
-productsList.push(new CreateProduct('wine-glass', '/img/wine-glass.jpg'));
+productsList.push(new CreateProduct('bag', 'img/bag.jpg'));
+productsList.push(new CreateProduct('banana', 'img/banana.jpg'));
+productsList.push(new CreateProduct('bathroom', 'img/bathroom.jpg'));
+productsList.push(new CreateProduct('boots', 'img/boots.jpg'));
+productsList.push(new CreateProduct('breakfast', 'img/breakfast.jpg'));
+productsList.push(new CreateProduct('bubblegum', 'img/bubblegum.jpg'));
+productsList.push(new CreateProduct('chair', 'img/chair.jpg'));
+productsList.push(new CreateProduct('cthulhu', 'img/cthulhu.jpg'));
+productsList.push(new CreateProduct('dog-duck', 'img/dog-duck.jpg'));
+productsList.push(new CreateProduct('dragon', 'img/dragon.jpg'));
+productsList.push(new CreateProduct('pen', 'img/pen.jpg'));
+productsList.push(new CreateProduct('pet-sweep', 'img/pet-sweep.jpg'));
+productsList.push(new CreateProduct('scissors', 'img/scissors.jpg'));
+productsList.push(new CreateProduct('shark', 'img/shark.jpg'));
+productsList.push(new CreateProduct('sweep', 'img/sweep.png'));
+productsList.push(new CreateProduct('tauntaun', 'img/tauntaun.jpg'));
+productsList.push(new CreateProduct('unicorn', 'img/unicorn.jpg'));
+productsList.push(new CreateProduct('water-can', 'img/water-can.jpg'));
+productsList.push(new CreateProduct('wine-glass', 'img/wine-glass.jpg'));
 
 let imgEls = document.querySelectorAll('img');
 let voteTrackerEl = document.getElementById('vote-tracker');
