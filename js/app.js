@@ -1,7 +1,7 @@
 'use strict';
 
 const productsList = [];
-let roundsOfVoting = 5;
+let roundsOfVoting = 25;
 let chartObj = null;
 
 function CreateProduct(name, source){
