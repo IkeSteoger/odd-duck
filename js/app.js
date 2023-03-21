@@ -2,6 +2,7 @@
 
 const productsList = [];
 let roundsOfVoting = 25;
+let chartObj = null
 
 function CreateProduct(name, source){
   this.name = name;
@@ -43,10 +44,21 @@ function renderProducts() {
   let product1 = productsList[generateRandomProduct()];
   let product2 = productsList[generateRandomProduct()];
   let product3 = productsList[generateRandomProduct()];
-  console.log('Products to Render ', imgEls);
+  console.log('Products to Render ', imgEls, product1, product2, product3);
   while (product1.name === product2.name || product1.name === product3.name || product2.name === product3.name){
     product2 = productsList[generateRandomProduct()];
     product3 = productsList[generateRandomProduct()];
+  }
+  console.log('RENDERED IMAGES ', imgEls);
+  console.log('FUTURE IMAGES ', product1.name, product2.name, product3.name);
+  while (imgEls[0].id === product1.name || imgEls[0].id === product2.name || imgEls[0].id === product3.name || imgEls[1].id === product1.name || imgEls[1].id === product2.name || imgEls[1].id === product3.name || imgEls[2].id === product1.name || imgEls[2].id === product2.name || imgEls[2].id === product3.name){
+    product1 = productsList[generateRandomProduct()];
+    product2 = productsList[generateRandomProduct()];
+    product3 = productsList[generateRandomProduct()];
+    while (product1.name === product2.name || product1.name === product3.name || product2.name === product3.name){
+      product2 = productsList[generateRandomProduct()];
+      product3 = productsList[generateRandomProduct()];
+    }
   }
   imgEls[0].src = product1.source;
   imgEls[0].id = product1.name;
@@ -91,8 +103,46 @@ function handleClick(event){
     roundsOfVoting--;
   } else {
     voteTrackerEl.removeEventListener('click', handleClick);
+    chartObj = drawChart();
   }
 }
 
 renderProducts();
 voteTrackerEl.addEventListener('click', handleClick);
+
+function drawChart() {
+  let labels = [];
+  let timesShownValues = [];
+  let timesClickedValues = [];
+  productsList.forEach(product => {
+    labels.push(product.name);
+    timesShownValues.push(product.timesShown);
+    timesClickedValues.push(product.timesClicked);
+  });
+  return new Chart(canvasEl, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Times Shown',
+        data: timesShownValues,
+        borderWidth: 1,
+      }, {
+        label: 'Times Clicked',
+        data: timesClickedValues,
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+const canvasEl = document.getElementById('chart');
+
+
