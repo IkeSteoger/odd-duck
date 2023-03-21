@@ -1,0 +1,40 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    border: thin solid black;
+}
+  
+#vote-tracker {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px;
+    border: thin solid black;
+}
+  
+img {
+    height: 100%;
+    margin: 0 20px;
+    border: thin solid black;
+}
+
+#buttonAndResults {
+    width: 400px;
+    margin: 20px;
+}
+
+li {
+    margin: 10px;
+}

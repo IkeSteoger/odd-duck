@@ -5,37 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odd Duck Products</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    
+    <!-- <link rel="stylesheet" href="css/reset.css"> -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="row">
         <h1>Odd Duck Products: Voting!</h1>
     </header>
     <main>
-        <section>
-            <p>
-                Results
-            </p>
-            <ul id=results>
-
-            </ul>
-        </section>
-        <section id="vote-tracker">
-            <img>
-            <img>
-            <img>
-        </section>
-        <section>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus obcaecati porro eveniet eius quos accusamus expedita inventore sit hic quod soluta minus fugiat natus ut, quam laboriosam non laborum ipsum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, repudiandae possimus recusandae quos officia perspiciatis atque sit natus vel rerum, hic distinctio voluptates delectus harum. Inventore saepe tenetur maxime excepturi!
-            </p>
+        <section class="row">
+            <section class="column" id="buttonAndResults">
+                <button onclick="resultsButton()" id="buttonResults">
+                    <p id="buttonP">Results</p>
+                </button>
+                <ul id=results>
+                </ul>
+            </section>
+            <section class="column">
+                <section id="vote-tracker">
+                    <img>
+                    <img>
+                    <img>
+                </section>
+                <section>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus obcaecati porro eveniet eius quos accusamus expedita inventore sit hic quod soluta minus fugiat natus ut, quam laboriosam non laborum ipsum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, repudiandae possimus recusandae quos officia perspiciatis atque sit natus vel rerum, hic distinctio voluptates delectus harum. Inventore saepe tenetur maxime excepturi!
+                    </p>
+                </section>
+            </section>
         </section>
     </main>
-    <footer>
+    <footer class="row">
         <p>Footer</p>
     </footer>
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
