@@ -112,7 +112,13 @@ function handleClick(event){
 }
 
 voteTrackerEl.addEventListener('click', handleClick);
-productsList = readData('products');
+
+if (readData('products') === null){
+  '';
+} else {
+  readData('products');
+}
+
 renderProducts();
 
 function writeData(key, value) {
@@ -122,8 +128,6 @@ function writeData(key, value) {
 function readData(key){
   return JSON.parse(localStorage.getItem(key));
 }
-
-
 
 console.log('PRODUCTS LIST AFTER CLICKS', productsList);
 console.log('LOCAL STORAGE AFTER CLICKS', localStorage)
