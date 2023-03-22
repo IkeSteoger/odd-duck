@@ -1,7 +1,7 @@
 'use strict';
 
-const productsList = [];
-let roundsOfVoting = 25;
+let productsList = [];
+let roundsOfVoting = 2;
 let chartObj = null;
 
 function CreateProduct(name, source){
@@ -34,23 +34,24 @@ productsList.push(new CreateProduct('wine-glass', 'img/wine-glass.jpg'));
 let imgEls = document.querySelectorAll('img');
 let voteTrackerEl = document.getElementById('vote-tracker');
 
-console.log('Current Products: ', productsList);
+// console.log('Current Products: ', productsList);
 
 function generateRandomProduct(){
   return Math.floor(Math.random() * productsList.length);
 }
 
+
 function renderProducts() {
   let product1 = productsList[generateRandomProduct()];
   let product2 = productsList[generateRandomProduct()];
   let product3 = productsList[generateRandomProduct()];
-  console.log('Products to Render ', imgEls, product1, product2, product3);
+  // console.log('Products to Render ', imgEls, product1, product2, product3);
   while (product1.name === product2.name || product1.name === product3.name || product2.name === product3.name){
     product2 = productsList[generateRandomProduct()];
     product3 = productsList[generateRandomProduct()];
   }
-  console.log('RENDERED IMAGES ', imgEls);
-  console.log('FUTURE IMAGES ', product1.name, product2.name, product3.name);
+  // console.log('RENDERED IMAGES ', imgEls);
+  // console.log('FUTURE IMAGES ', product1.name, product2.name, product3.name);
   while (imgEls[0].id === product1.name || imgEls[0].id === product2.name || imgEls[0].id === product3.name || imgEls[1].id === product1.name || imgEls[1].id === product2.name || imgEls[1].id === product3.name || imgEls[2].id === product1.name || imgEls[2].id === product2.name || imgEls[2].id === product3.name){
     product1 = productsList[generateRandomProduct()];
     product2 = productsList[generateRandomProduct()];
@@ -71,24 +72,25 @@ function renderProducts() {
   product3.timesShown += 1;
 }
 
-function resultsButton(){
-  const ul = document.getElementById('results');
-  ul.innerHTML = '';
-  const li = document.createElement('li');
-  if(roundsOfVoting > 0){
-    let text = ('Sorry, you need to vote ' + roundsOfVoting + ' more times to see results!');
-    li.appendChild(document.createTextNode(text));
-    ul.appendChild(li);
-  } else {
-    for(let h = 0; h < productsList.length; h++){
-      let text = (productsList[h].name + ' had ' + productsList[h].timesClicked + ' votes and was seen ' + productsList[h].timesShown + ' times.');
-      let lis = document.createElement('li');
-      lis.appendChild(document.createTextNode(text));
-      ul.appendChild(lis);
-      console.log('loop ran');
-    }
-  }
-}
+
+// function resultsButton(){
+//   const ul = document.getElementById('results');
+//   ul.innerHTML = '';
+//   const li = document.createElement('li');
+//   if(roundsOfVoting > 0){
+//     let text = ('Sorry, you need to vote ' + roundsOfVoting + ' more times to see results!');
+//     li.appendChild(document.createTextNode(text));
+//     ul.appendChild(li);
+//   } else {
+//     for(let h = 0; h < productsList.length; h++){
+//       let text = (productsList[h].name + ' had ' + productsList[h].timesClicked + ' votes and was seen ' + productsList[h].timesShown + ' times.');
+//       let lis = document.createElement('li');
+//       lis.appendChild(document.createTextNode(text));
+//       ul.appendChild(lis);
+//       // console.log('loop ran');
+//     }
+//   }
+// }
 
 function handleClick(event){
   let imgClicked = event.target.id;
@@ -97,7 +99,7 @@ function handleClick(event){
       image.timesClicked += 1;
     }
   });
-  console.log('Updated Products: ', productsList);
+  // console.log('Updated Products: ', productsList);
   if(roundsOfVoting > 1){
     renderProducts();
     roundsOfVoting--;
@@ -105,11 +107,28 @@ function handleClick(event){
     voteTrackerEl.removeEventListener('click', handleClick);
     chartObj = drawChart();
     roundsOfVoting--;
+    writeData('products', productsList);
   }
 }
 
-renderProducts();
 voteTrackerEl.addEventListener('click', handleClick);
+productsList = readData('products');
+renderProducts();
+
+function writeData(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function readData(key){
+  return JSON.parse(localStorage.getItem(key));
+}
+
+
+
+console.log('PRODUCTS LIST AFTER CLICKS', productsList);
+console.log('LOCAL STORAGE AFTER CLICKS', localStorage)
+
+const canvasEl = document.getElementById('chart');
 
 function drawChart() {
   let labels = [];
@@ -121,6 +140,7 @@ function drawChart() {
     timesClickedValues.push(product.timesClicked);
   });
   return new Chart(canvasEl, {
+    animationEnabled: true,
     type: 'bar',
     data: {
       labels: labels,
@@ -135,6 +155,7 @@ function drawChart() {
       }]
     },
     options: {
+      indexAxis: 'y',
       scales: {
         y: {
           beginAtZero: true
@@ -143,7 +164,4 @@ function drawChart() {
     }
   });
 }
-
-const canvasEl = document.getElementById('chart');
-
 
